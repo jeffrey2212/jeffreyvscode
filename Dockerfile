@@ -31,17 +31,16 @@ RUN code-server --install-extension ms-python.python
 
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
-
 # Copy files: 
 # COPY deploy-container/myTool /home/coder/myTool
 
 # -----------
+# Install Python3
+RUN sudo apt-get install -y python3
+
 # Install NodeJS
 RUN sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo bash -
 RUN sudo apt-get install -y nodejs
-
-# Install Python3
-RUN apt-get install python3
 
 # Port
 ENV PORT=8080
