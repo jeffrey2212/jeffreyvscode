@@ -1,5 +1,5 @@
 # Start from the code-server Debian base image
-FROM codercom/code-server:3.10.2
+FROM codercom/code-server:3.11.1
 
 USER coder
 
@@ -27,6 +27,7 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # RUN code-server --install-extension esbenp.prettier-vscode
 
 RUN code-server --install-extension svelte.svelte-vscode
+RUN code-server --install-extension ms-python.python
 
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
@@ -36,9 +37,11 @@ RUN code-server --install-extension svelte.svelte-vscode
 
 # -----------
 # Install NodeJS
-RUN sudo curl -fsSL https://deb.nodesource.com/setup_15.x | sudo bash -
+RUN sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo bash -
 RUN sudo apt-get install -y nodejs
 
+# Install Python3
+RUN apt-get install python3
 
 # Port
 ENV PORT=8080
